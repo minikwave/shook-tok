@@ -9,6 +9,7 @@ dist
 .DS_Store
 .vercel
 .railway
+supabase/.temp
 .turbo
 *.tsbuildinfo
 packages/db/node_modules/.cache
