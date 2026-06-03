@@ -1,0 +1,37 @@
+name: Register Discord Commands
+
+on:
+  workflow_dispatch:
+    inputs:
+      guild_only:
+        description: "테스트 서버만 등록 (DISCORD_GUILD_ID secret 필요)"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Register slash commands
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CLIENT_ID: ${{ secrets.DISCORD_CLIENT_ID }}
+          DISCORD_GUILD_ID: ${{ inputs.guild_only == 'true' && secrets.DISCORD_GUILD_ID || '' }}
+        run: pnpm commands:register

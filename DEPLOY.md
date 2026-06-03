@@ -22,17 +22,34 @@
 
 ## 2. Railway (Discord Bot)
 
+### Discord 앱 만들기 (최초 1회)
+
+1. https://discord.com/developers/applications → **New Application**
+2. **Bot** → **Reset Token** → `DISCORD_BOT_TOKEN` 복사
+3. **General Information** → Application ID → `DISCORD_CLIENT_ID`
+4. Bot → **Privileged Gateway Intents**: MVP는 **Guilds만** 사용 (특권 인텐트 불필요)
+5. `pnpm invite` 로 초대 URL 생성 후 테스트 서버에 추가
+
+### Railway 변수
+
 1. GitHub repo 연결 또는 `railway up`
-2. **Variables** (서비스에 설정):
-   - `DISCORD_BOT_TOKEN` ← **필수 (직접 입력)**
+2. **Variables** (서비스 `shook-tok`):
+   - `DISCORD_BOT_TOKEN` ← **필수**
    - `DISCORD_CLIENT_ID` ← **필수**
-   - `DATABASE_URL` ← Supabase pooler URI
+   - `DATABASE_URL` ← Supabase pooler URI (이미 설정됨)
    - `NODE_ENV=production`
+   - (선택) `DISCORD_GUILD_ID` — 테스트 서버 ID, 명령 즉시 반영용
+
+로컬 `.env` 작성 후 Railway에 한 번에 넣기:
+
+```powershell
+.\scripts\sync-railway-env.ps1
+```
+
 3. `Dockerfile` → 시작 시 `pnpm db:migrate:deploy` 후 봇 실행
-4. 배포 후 로컬에서:
-   ```bash
-   pnpm commands:register
-   ```
+4. 슬래시 명령 등록 (택 1):
+   - 로컬: `pnpm commands:register`
+   - GitHub: **Actions → Register Discord Commands** (repo Secrets에 `DISCORD_BOT_TOKEN`, `DISCORD_CLIENT_ID` 등록)
 
 ## 3. Vercel (Health API)
 

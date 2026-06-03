@@ -22,7 +22,10 @@
 
 전체 패키지 빌드만 확인할 때는 `pnpm build`. 프로덕션 실행 예: `pnpm build` 후 `pnpm start:bot`.
 
-Discord Developer Portal에서 Bot 토큰·Application ID를 발급하고, 봇에 **applications.commands** 및 서버 권한을 부여하세요.
+Discord Developer Portal에서 Bot 토큰·Application ID를 발급하고, 봇에 **applications.commands** 및 서버 권한을 부여하세요.  
+**Railway에 토큰을 넣는 방법**은 `DEPLOY.md` §2 참고 (`.\scripts\sync-railway-env.ps1` 또는 대시보드).
+
+배포 점검: `pnpm check:deploy`
 
 ## Docker (Railway / 수동)
 

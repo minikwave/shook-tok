@@ -10,7 +10,8 @@
     "db:push": "pnpm --filter @shook/db push",
     "commands:register": "pnpm --filter @shook/bot commands:register",
     "invite": "pnpm --filter @shook/bot invite",
-    "start:bot": "pnpm --filter @shook/bot start"
+    "start:bot": "pnpm --filter @shook/bot start",
+    "check:deploy": "node scripts/check-deploy.mjs"
   },
   "engines": {
     "node": ">=20"
