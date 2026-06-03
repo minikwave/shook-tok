@@ -9,6 +9,14 @@
 - `packages/db` — Prisma + PostgreSQL 스키마
 - `packages/shared` — `TOK_LIMITS`, `TOK_POINTS`, 기본 이모지 상수
 
+## 빠른 시작 (Discord 토큰 준비 후)
+
+```powershell
+pnpm setup
+```
+
+대화형으로 `.env` 생성 → Railway 동기화 → 슬래시 명령 등록까지 진행합니다.
+
 ## 로컬 실행
 
 1. `.env.example`을 복사해 `.env`를 만들고 `DISCORD_BOT_TOKEN`, `DISCORD_CLIENT_ID`, `DATABASE_URL`을 채웁니다.  

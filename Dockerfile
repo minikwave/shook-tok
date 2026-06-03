@@ -13,6 +13,7 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json ./
 COPY packages/shared ./packages/shared
 COPY packages/db ./packages/db
 COPY apps ./apps
+COPY scripts/start-production.sh ./scripts/start-production.sh
 
 RUN pnpm install --frozen-lockfile
 
@@ -26,4 +27,4 @@ RUN pnpm db:generate \
   && pnpm --filter @shook/bot build
 
 ENV NODE_ENV=production
-CMD ["sh", "-c", "pnpm db:migrate:deploy && node apps/bot/dist/index.js"]
+CMD ["sh", "scripts/start-production.sh"]
