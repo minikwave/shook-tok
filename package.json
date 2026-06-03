@@ -12,7 +12,9 @@
     "invite": "pnpm --filter @shook/bot invite",
     "start:bot": "pnpm --filter @shook/bot start",
     "check:deploy": "node scripts/check-deploy.mjs",
-    "setup": "powershell -ExecutionPolicy Bypass -File scripts/setup.ps1"
+    "verify:all": "node scripts/verify-all.mjs",
+    "setup": "powershell -ExecutionPolicy Bypass -File scripts/setup.ps1",
+    "setup:token": "powershell -ExecutionPolicy Bypass -File scripts/import-bot-token.ps1"
   },
   "engines": {
     "node": ">=20"
