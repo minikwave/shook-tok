@@ -3,5 +3,6 @@
   "framework": null,
   "installCommand": "echo \"Vercel: health API only — skip install\"",
   "buildCommand": "echo \"Vercel: health API only — skip build\"",
+  "outputDirectory": ".",
   "rewrites": [{ "source": "/", "destination": "/api/health" }]
 }

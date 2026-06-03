@@ -14,9 +14,8 @@
 1. `.env.example`을 복사해 `.env`를 만들고 `DISCORD_BOT_TOKEN`, `DISCORD_CLIENT_ID`, `DATABASE_URL`을 채웁니다.  
    (`.env`는 **저장소 루트** 또는 **`apps/bot`** 에 두면 자동으로 읽힙니다.)
 2. `pnpm install`
-3. DB 준비 후 마이그레이션:
-   - Docker로 Postgres만 쓸 때: `docker compose up -d` 후 `pnpm db:migrate:deploy` (또는 스키마만 맞출 때 `pnpm db:push`)
-   - 개발 중 스키마 반복 변경: `pnpm db:migrate`
+3. DB: [Supabase](https://supabase.com/dashboard/project/zzkjlcyyvnaaauzrfoox) 또는 로컬 Postgres → `pnpm db:migrate:deploy`  
+   (클라우드 배포·연동은 **`DEPLOY.md`** 참고)
 4. `pnpm commands:register` — 슬래시 명령 등록 (`DISCORD_GUILD_ID`를 넣으면 **해당 서버만** 등록·즉시 반영, 비우면 **전역** 등록)  
 5. `pnpm invite` — 브라우저에서 열 초대 URL 출력 (`.env`에 `DISCORD_CLIENT_ID` 필요)  
 6. `pnpm dev` — shared/db 빌드 후 봇 실행
@@ -25,16 +24,18 @@
 
 Discord Developer Portal에서 Bot 토큰·Application ID를 발급하고, 봇에 **applications.commands** 및 서버 권한을 부여하세요.
 
-## Docker (봇만)
+## Docker (Railway / 수동)
 
-저장소 루트에서:
+프로덕션은 **Railway**가 루트 `Dockerfile`로 배포합니다. 로컬에서 이미지만 테스트할 때:
 
 ```bash
 docker build -t shook-tok-bot .
 docker run --env-file .env shook-tok-bot
 ```
 
-빌드 단계의 `DATABASE_URL`은 Prisma Client 생성용 placeholder이며, **실행 시** `.env`의 실제 DB URL이 사용됩니다.
+## 배포
+
+Supabase + Railway + Vercel 연동 절차는 **`DEPLOY.md`** 를 보세요.
 
 ## 참고
 
