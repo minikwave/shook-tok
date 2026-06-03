@@ -2,7 +2,7 @@
  * Discord 봇 초대 URL을 출력합니다.
  * `.env`의 DISCORD_CLIENT_ID(Application ID)를 사용합니다.
  */
-import "./load-env.js";
+import "../load-env.js";
 
 /** ViewChannel + SendMessages + EmbedLinks + ReadMessageHistory */
 const DEFAULT_PERMISSIONS = 1024 + 2048 + 16384 + 65536;
