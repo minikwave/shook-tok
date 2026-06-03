@@ -14,6 +14,7 @@ COPY packages/shared ./packages/shared
 COPY packages/db ./packages/db
 COPY apps ./apps
 COPY scripts/start-production.sh ./scripts/start-production.sh
+RUN sed -i 's/\r$//' scripts/start-production.sh && chmod +x scripts/start-production.sh
 
 RUN pnpm install --frozen-lockfile
 
