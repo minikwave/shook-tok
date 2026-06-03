@@ -1,0 +1,19 @@
+{
+  "name": "shook-tok-bot",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r run build",
+    "dev": "pnpm --filter @shook/shared build && pnpm db:generate && pnpm --filter @shook/db build && pnpm --filter @shook/bot dev",
+    "db:generate": "pnpm --filter @shook/db generate",
+    "db:migrate": "pnpm --filter @shook/db migrate",
+    "db:migrate:deploy": "pnpm --filter @shook/db migrate:deploy",
+    "db:push": "pnpm --filter @shook/db push",
+    "commands:register": "pnpm --filter @shook/bot commands:register",
+    "invite": "pnpm --filter @shook/bot invite",
+    "start:bot": "pnpm --filter @shook/bot start"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
